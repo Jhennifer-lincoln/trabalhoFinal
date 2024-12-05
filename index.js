@@ -26,7 +26,7 @@ let mensagem = [];
 
 function autenticacao(req, res, next) {
     if (!req.session.usuario) {
-        res.redirect('/login.html');
+        res.redirect('/');
         return;
     }
     next();
@@ -53,10 +53,18 @@ function validarLogin(req, res) {
         res.redirect('/menu');
     } else {
         res.send(`
-            <div class="alert alert-danger" role="alert">
-                Usuário ou senha inválidos!
-            </div>
-            <a href="/login.html" class="btn btn-secondary">Tentar novamente</a>
+            <head>
+            <meta charset="utf-8">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            </head>
+            <body>
+                <div class="container w-50 mt-5">
+                    <div class="alert alert-danger" role="alert">
+                        Usuário ou senha inválidos!
+                    </div>
+                    <a href="/" class="btn btn-secondary">Tentar novamente</a>
+                </div>
+            </body>
         `);
     }
 }
@@ -95,7 +103,7 @@ function menu(req, res) {
 
 function sair(req, res) {
     req.session.destroy();
-    res.redirect('/login.html');
+    res.redirect('/');
 }
 
 function cadastrar(req, res) {
@@ -210,7 +218,7 @@ function postarMensagem(req, res) {
     res.redirect('/chat');
 }
 
-app.get('/login.html', login);
+app.get('/', login);
 app.post('/login', validarLogin);
 app.get('/menu', autenticacao, menu);
 app.get('/logout', sair);
@@ -220,5 +228,5 @@ app.get('/chat', autenticacao, chat);
 app.post('/postarMensagem', autenticacao, postarMensagem);
 
 app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}/login.html`);
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
