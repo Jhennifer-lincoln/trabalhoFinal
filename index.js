@@ -22,7 +22,7 @@ app.use(
 );
 
 let usuario = []; 
-let mensagem = []; 
+let mensagem = [];
 
 function autenticacao(req, res, next) {
     if (!req.session.usuario) {
@@ -49,7 +49,7 @@ function validarLogin(req, res) {
 
     if (usuario === "adm" && senha === "123") {
         req.session.usuario = usuario;
-        res.cookie('lastAccess', new Date().toLocaleString());
+        req.session.lastAccess = new Date().toLocaleString();
         res.redirect('/menu');
     } else {
         res.send(`
@@ -62,6 +62,7 @@ function validarLogin(req, res) {
 }
 
 function menu(req, res) {
+    const lastAccess = req.session.lastAccess || 'Nunca';
     res.send(`
         <!DOCTYPE html>
         <html lang="pt-br">
@@ -73,6 +74,7 @@ function menu(req, res) {
         <body>
             <div class="container w-50 mt-5">
                 <h1 class="text-center mb-4">Bem-vindo, ${req.session.usuario}</h1>
+                <p><strong>Último acesso:</strong> ${lastAccess}</p>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <a href="/cadastro.html" class="btn btn-outline-primary w-100">Cadastro de Usuários</a>
@@ -81,7 +83,7 @@ function menu(req, res) {
                         <a href="/chat" class="btn btn-outline-success w-100">Bate-papo</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/logout" class="btn btn-outline-danger w-100">Logout</a>
+                        <a href="/logout" class="btn btn-outline-danger w-100">Sair</a>
                     </li>
                 </ul>
             </div>
