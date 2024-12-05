@@ -1,0 +1,26 @@
+{
+  "name": "trabalhofinal",
+  "version": "1.0.0",
+  "description": "Trabalho Final PPI - Bate-papo",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jhennifer-lincoln/trabalhoFinal.git"
+  },
+  "author": "Jhennifer Lincoln",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jhennifer-lincoln/trabalhoFinal/issues"
+  },
+  "homepage": "https://github.com/Jhennifer-lincoln/trabalhoFinal#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
+  }
+}

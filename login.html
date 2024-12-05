@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container w-25 mt-5">
+        <form action='/login' method='POST' class="row g-3 needs-validation" novalidate>
+            <fieldset class="border p-2">
+                <legend class="mb-3">Autenticação do Sistema</legend>
+                <div class="col-md-12">
+                    <label for="usuario" class="form-label">Usuário:</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" required>
+                </div>
+                <div class="col-12 mt-2">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
